@@ -4,11 +4,13 @@ import './index.css';
 import App from './App';
 import UseReducer from './UseReducer';
 import reportWebVitals from './reportWebVitals';
+import Count from './Count';
+import React_redux from './React_redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <UseReducer />
+    <React_redux />
   </React.StrictMode>
 );
 
