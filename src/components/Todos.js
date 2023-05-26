@@ -17,7 +17,7 @@ const TodoList = React.memo(function TodoList({ todos, onToggle }) {
     return(
         <ul>
             {todos.map(todo => {
-                <TodoItem key={todo.id} todo={todo} onToggle={onToggle} />
+                return <TodoItem key={todo.id} todo={todo} onToggle={onToggle} />
             })}
         </ul>
     )
@@ -27,7 +27,7 @@ function Todos({ todos, onCreate, onToggle }) {
     // 리덕스를 사용한다고 해서 모든 상태를 리덕스에서 관리해야하는 것은 아닙니다.
     const [text, setText] = useState('');
     const onChange = e => setText(e.target.value);
-    const onSumit = e => {
+    const onSubmit = e => {
         e.preventDefault(); // Submit 이벤트가 발생했을 때 새로고침 방지
         onCreate(text);
         setText(''); // 인풋 초기화
@@ -35,7 +35,7 @@ function Todos({ todos, onCreate, onToggle }) {
 
     return(
         <div>
-            <form onSubmit={onSumit}>
+            <form onSubmit={onSubmit}>
                 <input 
                     value={text}
                     placeholder="할 일을 입력하세요.."
