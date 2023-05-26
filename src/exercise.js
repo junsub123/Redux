@@ -3,6 +3,8 @@ import { createStore } from 'redux';
 
 // createStore는 스토어를 만들어주는 함수입니다.
 // 리액트 프로젝트에서는 단 하나의 스토어를 만듭니다.
+// createStore에 밑줄이 생기는 이유 밑에 참고
+// https://velog.io/@gusdh2/redux-createStore-%EC%97%90-%EB%B0%91%EC%A4%84%EC%9D%B4-%EA%B7%B8%EC%97%AC%EC%A7%80%EB%8A%94-%EC%9D%B4%EC%9C%A0%EB%8A%94-%EC%99%9C%EC%9D%BC%EA%B9%8C
 
 /* 리덕스에서 관리 할 상태 정의 */
 const initialState = {
