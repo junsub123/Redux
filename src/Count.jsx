@@ -1,41 +1,21 @@
-import React,{useState, useReducer} from "react";
+import React from "react";
+import { increase } from "./modules/counter";
 
-export default function Count() {
-    const [number, setNumber] = useState(1)
-    function countReducer(oldCount, action) {
-        if(action === 'Up'){
-            return oldCount + 1
-        }else if(action === 'Down'){
-            return oldCount - 1
-        }else if(action === 'Zero'){
-            return 0;
-        }
+export default function Counter({ number, diff, onIncrease, onDecrease, onSetDiff }) {
+    
+    const onChange = e => {
+        // e.target.value 의 타입은 문자열이기 때문에 숫자로 변환해주어야 합니다.
+        onSetDiff(parseInt(e.target.value, 10));
     }
 
-    // const [count, setCount] = useState(0);
-    const [count, countDispatch] = useReducer(countReducer, 0)
-
-    function Up() {
-        countDispatch('Up')
-    }
-    function Down() {
-        countDispatch('Down')
-    }
-    function Zero() {
-        countDispatch('Zero')
-    }
-    function changeNumber(event) {
-        setNumber(Number(event.target.value))
-    }
-
-    return (
-        <div style={{ textAlign: 'center' }}>
-            <h1>{count}</h1>
-            <input type="text" value={number} onChange={changeNumber} />
-            <input type="button" value='-' onClick={Down} />
-            <input type="button" value='0' onClick={Zero} />
-            <input type="button" value='+' onClick={Up} />
-
+    return(
+        <div>
+            <h1>{number}</h1>
+            <div>
+                <input type="number" value={diff} min="1" onChange={onChange} />
+                <button onClick={onIncrease}>+</button>
+                <button onClick={onDecrease}>-</button>
+            </div>
         </div>
-    )
+    );
 }

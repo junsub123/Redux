@@ -2,15 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import UseReducer from './UseReducer';
 import reportWebVitals from './reportWebVitals';
-import Count from './Count';
-import React_redux from './React_redux';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import rootReducer from './modules';
+import { composeWithDevTools } from "@redux-devtools/extension";
+
+const store = createStore(rootReducer, composeWithDevTools()); // 스토어를 만듭니다.
+// composeWithDevTools 를 사용하여 리덕스 개발자 도구 활성화
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 
